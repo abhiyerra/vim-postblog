@@ -19,7 +19,10 @@ def post_blog():
     title = vim.current.buffer[offsetline + 0]
     tags = vim.current.buffer[offsetline + 1]
     text = '\n'.join(vim.current.buffer[offsetline + 2:])
-    tags = '[tags]' + tags + '[/tags]\n'
+
+    # If we find [tags] and [/tags] we don't need to include the [tags]s
+    if tags.find('[tags]') == -1 and tags.find('[/tags]') == -1
+        tags = '[tags]' + tags + '[/tags]\n'
 
     content = tags + text
 
