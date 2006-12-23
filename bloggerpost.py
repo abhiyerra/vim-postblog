@@ -1,5 +1,7 @@
-# Post to Blogger API
+# Post to Blogger
 # Copyright (c) 2006 Kesava Yerra. Licensed under BSD.
+
+# Labels work so posting to blogger basically works.
 
 import httplib
 import urllib
