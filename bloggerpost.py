@@ -3,8 +3,6 @@
 
 import httplib
 import urllib
-import urllib2
-from xml.dom.minidom import Document
 
 class GoogleLogin:
     def __init__(self, email, passwd, service):
@@ -68,7 +66,7 @@ class Entry:
         self.labels = labels
 
     def _get_label_element(self, label):
-        return '<category term="%s"/>\n' % label.replace(' ', '+')
+        return '<category scheme="http://www.blogger.com/atom/ns#" term="%s"/>' % label
 
     def __str__(self):
         xml_entry = \
@@ -92,4 +90,4 @@ def post_entry(email, passwd, blogid, title, content, labels):
     blogger = BloggerGDataService(gl.get_auth(), blogid)
     blogger.insert_entry(str(entry))
 
-post_entry('email', 'password', 'postid', 'Test', '<p>Test</p><p>Test2</p>', 'test1, test2, test3')
+post_entry('email', 'password', 'blogid', 'Test', '<p>Test</p><p>Test2</p>', 'test1, test2, test3')
